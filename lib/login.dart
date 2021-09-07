@@ -22,7 +22,9 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  // TODO: Add text editing controllers (101)
+  final _usernameController = TextEditingController();
+  final _passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,11 +41,50 @@ class _LoginPageState extends State<LoginPage> {
               ],
             ),
             const SizedBox(height: 120.0),
+            // [Name]
+            TextField(
+                controller: _usernameController,
+                decoration: const InputDecoration(
+                filled: true,
+                labelText: 'Username',
+              ),
+            ),
+            // spacer
+            const SizedBox(height: 12.0),
+            // [Password]
+            TextField(
+              controller: _passwordController,
+              decoration: const InputDecoration(
+                filled: true,
+                labelText: 'Password',
+              ),
+              obscureText: true,
+            ),
             // TODO: Wrap Username with AccentColorOverride (103)
             // TODO: Remove filled: true values (103)
             // TODO: Wrap Password with AccentColorOverride (103)
             // TODO: Add TextField widgets (101)
-            // TODO: Add button bar (101)
+            ButtonBar(
+            // TODO: Add a beveled rectangular border to CANCEL (103)
+            children: <Widget>[
+              TextButton(
+                child: const Text('CANCEL'),
+                onPressed: () {
+                      _usernameController.clear();
+                      _passwordController.clear();
+                },
+              ),
+              // TODO: Add an elevation to NEXT (103)
+              // TODO: Add a beveled rectangular border to NEXT (103)
+              ElevatedButton(
+                child: const Text('NEXT'),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+),
+
           ],
         ),
       ),
